@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pricing Plans</title>
+
+  <!-- React & Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; background: #fff; padding: 20px; }
+
+    .container {
+      width: 700px; 
+      margin: auto; 
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+
+    .header-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .header-subtitle {
+      font-size: 18px;
+      color: #7a7a7a;
+      line-height: 1.5;
+    }
+
+    .plan-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 18px 0;
+    }
+
+    .plan-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin: 2px 0;
+      color: #555;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .button {
+      background-color: #d7d7ff;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    // Reusable feature bullet component
+    function FeatureItem({ text }) {
+      return (
+        <div className="feature">
+          ✔ &nbsp; {text}
+        </div>
+      );
+    }
+
+    // Reusable plan card component
+    function PlanCard({ title, price, features }) {
+      return (
+        <div className="plan-card">
+          <div>
+            <div className="plan-title">{title}</div>
+            {features.map((f, i) => (
+              <FeatureItem key={i} text={f} />
+            ))}
+          </div>
+
+          <div style={{ textAlign: "right" }}>
+            <div className="price">{price}</div>
+            <button className="button">Get Started</button>
+          </div>
+        </div>
+      );
+    }
+
+    // Main parent container component
+    function PlansSection() {
+      return (
+        <div className="container">
+
+          {/* Header */}
+          <h2 className="header-title">
+            The Right Plan for <span style={{color: "#9b7bff"}}>Your Business</span>
+          </h2>
+          <p className="header-subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam 
+            quod in iure vero. Facilis magnam, sed officiis commodi labore odit.
+          </p>
+
+          {/* Cards */}
+          <PlanCard
+            title="Starter"
+            price="Free"
+            features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+          />
+
+          <PlanCard
+            title="Lorem Plus"
+            price="$32.00"
+            features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+          />
+
+          <PlanCard
+            title="Lorem Pro"
+            price="$50.00"
+            features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+          />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<PlansSection />);
+  </script>
+
+</body>
+</html>

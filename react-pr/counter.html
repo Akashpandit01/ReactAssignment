@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root">
+
+        Hello word
+    </div>
+    
+</body>
+<script type="text/babel">
+    function Counter()
+    {
+
+        let [count,SetCount]=React.useState(0);
+        function increaseCount()
+        {
+            SetCount(count+1);
+        }
+
+        function decresecount(){
+            SetCount(count-1);
+        }
+        return<>
+        <button  onClick={increaseCount}>Cick</button>
+        <button onClick={decresecount}>Decrese</button>
+        <h1>{count}</h1>
+        </>
+    }
+
+    function App()
+{
+    return (<>
+    <Counter/>
+    </>)
+}
+
+let root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>)
+
+</script>
+</html>
