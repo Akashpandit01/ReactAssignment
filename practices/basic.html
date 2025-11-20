@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+   <div id="root"></div>
+
+   <script type="text/babel">
+function App(){
+
+    const {useState}=React;
+    const [text,setText]=useState('Hellow word')
+
+    const [count,setCount]=useState(0);
+
+    const [user,setUser]=useState({name:"tommy",age:20});
+  
+
+    function changeText(){
+        setText("akash");
+    }
+
+    const updateage =()=>{
+        setUser({...user,age:user.age+1});
+    }
+
+     const increse=()=>{
+        setCount(count+1);
+        setCount((prevcount)=>prevcount+1);
+        setCount((prevcount)=>prevcount+1);
+        setCount((prevcount)=>prevcount+1);
+     }
+
+    return(
+        <>
+    <h1>{text}</h1>
+    <h1>{count}</h1>
+    <h1>{user.name} is {user.age} old</h1>
+    <button onClick={changeText}>Change</button>
+    <button onClick={increse}>increse</button>
+     <button onClick={updateage}>update</button>
+    
+    </>);
+}
+
+   let root=ReactDOM.createRoot(document.getElementById('root'));
+   root.render(<App/>);
+</script>
+
+</body>
+
+
+
+
+
+</html>

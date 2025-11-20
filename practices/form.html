@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+   <div id="root"></div>
+
+   <script type="text/babel">
+
+ const {useState}=React;
+
+function SimplieForm(){
+    const [name,setName]=useState("");
+
+    const handleSubmit =(e)=>{
+        e.preventDefault();
+        alert(`user have typed this ${name}`)
+        setName("");
+    }
+    return(<>
+    
+      <form onSubmit={handleSubmit}>
+        <label >Enter your name</label>
+        <input type="text" name="username" value={name} onChange={(e)=>setName(e.target.value)}/>
+        <button type="submit">Submit</button>
+        </form>
+    </>)
+}
+
+
+
+
+
+function Completeform(){
+    const[formdata,setformData]=useState({name:"",
+        password:"",
+        gender:"",
+        Comments:"",
+
+    });
+
+    function  Handelchange(e){
+    console.log(e);
+    const {name,value}=e.target;
+
+    setformData({...formdata,[name]:value})
+    }
+
+    return(
+        <form>
+            <label>
+              name:{" "}
+              <input type="text" name="name"
+               value={formdata.name} onChange={Handelchange}/>  
+                </label>
+
+
+                  <label>
+              password:{" "}
+              <input type="password" name="password" value={formdata.password} onChange={Handelchange}/>  
+                </label>
+<br/>
+            Gender:{" "}
+            <select name="gender" id="g" value={formdata.gender} onChange={Handelchange}>
+                <option value="male">Male</option>
+                <option value="Female">Female</option>
+                </select>
+            
+               <label >
+                
+                comment:
+                <textarea name="Comments" value={formdata.Comments} onChange={Handelchange}></textarea>
+                </label>
+
+                <button type='submit'>Submit</button>
+            </form>
+    )
+
+}
+function App(){
+
+    
+
+    return(
+        <>
+   <Completeform/>
+    </>);
+}
+
+   let root=ReactDOM.createRoot(document.getElementById('root'));
+   root.render(<App/>);
+</script>
+
+</body>
+
+
+
+
+
+</html>

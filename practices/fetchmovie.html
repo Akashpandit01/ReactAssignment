@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head> 
+<body>
+    <div id="root"></div>
+ 
+
+    <script type="text/babel">
+
+   const {useState}=React;
+ 
+        function App(){
+       const [movie,setMovie]=useState([]);
+       const [moveName,setMovieName]=useState("");
+     async function fetchData()
+  {
+
+     try {
+     const respose= await fetch("https://myfirst-7a10a-default-rtdb.asia-southeast1.firebasedatabase.app/movies1.json");
+     const result=await respose.json();
+     
+       const moviesArray=Object.entries(result).map(([id,movies])=>({id,movies}));
+       setMovie(moviesArray);
+
+       console.log(moviesArray);
+
+   } catch (error) {
+    
+   }
+  } 
+  async function addmovie(){
+     if(!moveName)
+     return alert("please enter moviename");
+
+     try {
+        const respose=await fetch("https://myfirst-7a10a-default-rtdb.asia-southeast1.firebasedatabase.app/movies1.json",{
+            method:"POST",
+            body:JSON.stringify({name:moveName}),
+            headers:{'Content-Type':"application/json"}
+        })
+         setMovieName("");
+     } catch (error) {
+        
+     }
+  }
+          
+           return (<>
+           <h1>movies</h1>
+           <button onClick={fetchData}>click</button>
+
+           <button onClick={addmovie}>Add</button>
+       <input type="text" placeholder="Add movie" value={moveName} onChange={(e)=>setMovieName(e.target.value)} />
+           <ul>
+            {movie.map((item,index)=>(
+                <li key={index}>{item.movies.name}</li>
+            ))}
+            </ul>
+            
+           </>)
+      
+        }
+
+     const root=ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App/>)
+
+    </script>
+</body>
+</html>

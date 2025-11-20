@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Reusable Card Component</title>
+
+  <!-- React & Babel CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Reusable Card Component
+    function Card({ title, children }) {
+      const cardStyle = {
+        border: "1px solid #ccc",
+        borderRadius: "6px",
+        padding: "16px",
+        marginBottom: "16px",
+        boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
+      };
+
+      const titleStyle = {
+        fontSize: "18px",
+        fontWeight: "bold",
+        marginBottom: "10px"
+      };
+
+      return (
+        <div style={cardStyle}>
+          <div style={titleStyle}>{title}</div>
+          <div>{children}</div>
+        </div>
+      );
+    }
+
+    // Parent Component
+    function App() {
+      return (
+        <div>
+          <Card title="About Me">
+            <p>Hello! My name is Akash. I love coding and learning new tech!</p>
+          </Card>
+
+          <Card title="My Skills">
+            <ul>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Java</li>
+            </ul>
+          </Card>
+
+          <Card title="Quote of the Day">
+            <i>"The secret to getting ahead is getting started."</i>
+          </Card>
+        </div>
+      );
+    }
+
+    // Render App
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
