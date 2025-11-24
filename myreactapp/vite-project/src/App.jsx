@@ -1,38 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { createContext } from 'react';
-import { useContext } from 'react';
+// cd m
 
+import Datacomponent from "./Datacomponent";
+import DataProvider from "./DataProvider";
 
-  const UserContext=createContext();// step 1: create context
-function App() {
+// import { useContext } from "react";
+// import { createContext } from "react";
+// import { useState } from "react";
+
+//  const UserContext=createContext();
+// function App(){
+//   const [user,setUser]=useState("Tommy");
+
+//   return (
+//     <UserContext.Provider value={user}>
+//    <Parent/>
+//     </UserContext.Provider>
   
- const [user,setUser]=useState("tommy")  
-  return  (
+//   );
+// }
 
-    //step 2 provide context
-    <UserContext.Provider value={user}>
+// function Parent(){
+//   return <Child/>
+// }
 
-      <Parent/>
-    </UserContext.Provider>
-  )
-   
+// function Child(){
+//   return <GrandChild/>
+// }
+
+
+// function GrandChild(){
+//   const user=useContext(UserContext);
+//   return <h1>Hello ,{user}</h1>
+// }
+// export default App;
+
+// function Box({children}){
+//   return <div style={{border:"2px solid red",padding:"10px", margin:"10px"}}>{children}</div>
+// }
+
+// function App(){
+//  return( <>
+//  <h1>Hellow from React</h1>
+//   <Box>
+//  <h1>Hellow from React</h1>
   
-}
-function Parent({user}){
-  return <Child/>
-}
+//    </Box>
+//    <Box>
+//   <p>This is inside a box</p>
+//   </Box>
  
-function Child(){
-  return <Gradchild/>;
+  
+//   </>)
+// }
+
+// export default App;
+
+
+
+function App(){
+ 
+  return (<>
+   
+      <h1>Hellow From React</h1>
+      <DataProvider>
+     <Datacomponent/>
+   </DataProvider>
+  </>)
+   
 }
-
-function Gradchild(){
-
-  const user=useContext(UserContext)
-  return <h1>Hello ,{user}</h1>
-}
-
 export default App
