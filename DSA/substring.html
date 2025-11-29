@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+
+// // Online Javascript Editor for free
+// // Write, Edit and Run your Javascript code using JS Online Compiler
+
+// function generatesubString(str)
+// {    let count=0
+    
+//     for(let i=0;i<str.length;i++)
+//     {
+//         let temp="";
+//       for(let j=i;j<str.length;j++)
+//       {
+//             temp=temp+str[j];
+//         console.log(temp);
+        
+//         // if(temp[0]==='a' ||temp[0]==='e' || temp[0]==='i' ||temp[0]==='o'|| temp[0]==='u')
+//         // {
+//         //   console.log(temp);  
+//         // }
+        
+//         if(isStartWithVowel(temp))
+//         {
+//             count++;
+//         }
+          
+//       }
+//     }
+//     console.log(count);
+// }
+
+
+// function isStartWithVowel(temp){
+//   if(temp[0]==='a' ||temp[0]==='e' || temp[0]==='i' ||temp[0]==='o'|| temp==='u')
+//         {
+//             return true;
+//         }else{
+//         return false;
+//         }
+    
+// }
+// generatesubString("akaesh")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // number of subString is length is prime
+// let count=0;
+// function substringpr(str)
+// { 
+   
+//     for(let i=0;i<str.length;i++)
+//     { let temp="";
+//         for(let j=i;j<str.length;j++)
+//         {
+//         temp=temp+str[j];
+//      console.log(temp);
+//       if(primesubstr(temp.length))
+//       {
+//           count++;
+//       }
+//         }
+//     }
+//     console.log(count)
+// }
+//   function primesubstr(temp){
+//       if(temp<=1)
+//       {
+//           return false;
+//       }
+       
+//       for(let i=2;i<temp;i++)
+//       {
+//           if(temp%i==0)
+//           {
+//               return false;
+//           }
+//       }
+//       return true;
+       
+       
+//   }
+// substringpr("Masai")
+    
+ 
+ 
+    // count substring taht start with k 
+    
+//   let str="akash";
+//   let count=0;
+   
+//   for(let i=0;i<str.length;i++)
+//   {  
+//       let temp=""
+//       for(let j=i;j<str.length;j++)
+//       {
+//           temp=temp+str[j]; 
+//           console.log(temp);
+//           if(startWithk(temp)){
+//              count++;  
+//           }
+//       }
+       
+//   }
+//   console.log(count);
+
+
+
+// function startWithk(temp)
+// {
+//      if(temp[0]==='k')
+//      {
+//          return true;
+//      }
+//      return false;
+// }
+
+
+
+
+//substring that starting ending with same character
+
+//  function checksubstri(str)
+//  { 
+//      let count=0;
+    
+//      for(let i=0;i<str.length;i++)
+//      {
+//           let temp="";
+//          for(let j=i;j<str.length;j++)
+//          {
+//           temp=temp+str[j];
+//           console.log(temp);
+//           if(checkStartEnd(temp))
+//           {
+//               count++;
+//           }
+//          }
+         
+//      }
+//     console.log(count) 
+//  }
+ 
+//  function checkStartEnd(temp){
+//         //  if(temp[0]===temp[temp.length-1])
+//         //  {
+//         //      return true;
+//         //  }
+//         //  return false;
+//         return temp[0]===temp[temp.length-1];
+//      }
+//  checksubstri("akash")
+
+
+
+// longest substring without duplicate characters.
+
+
+
+//  let s = "abcabcbb";
+//  let max=1;
+//  let temp1="";
+//  for(let i=0;i<s.length;i++){
+      
+//       let temp=""
+//      for(let j=i;j<s.length;j++)
+//      {
+//           temp=temp+s[j];
+//           if(logestsubstr(temp))
+//           {  
+//             //   console.log(temp)
+//             //   console.log(longestcount(temp));
+            
+//             if(temp.length>max)
+//             {
+//                 max=temp.length;
+//                 temp1=temp;
+//             }
+               
+//           }
+         
+//      }
+//  }
+//  console.log(temp1)
+//  console.log(max);
+ 
+ 
+//  function  logestsubstr(temp)
+//  {
+//      for(let i=0;i<temp.length;i++)
+//      {
+//          for(let j=i+1;j<temp.length;j++)
+//          {
+//              if(temp[i]===temp[j])
+//              {
+//                  return false;
+//                  break;
+//              }
+//          }
+         
+//      }
+//      return true;
+//  }
+
+
+// let s = "abcabcbb";
+
+function lengthofLongestsubstr(s){
+    let set=new Set();
+    let left=0;
+    let maxLen=0;
+    
+    for(let right=0;right<s.length;right++)
+    {
+        while(set.has(s[right])){
+            set.delete(s[right]);
+            left++;
+        }
+        set.add(s[right]);
+        
+        maxLen=Math.max(maxLen,right-left+1);
+    }
+    return maxLen
+}
+
+ console.log(lengthofLongestsubstr("abcabcbb"))
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

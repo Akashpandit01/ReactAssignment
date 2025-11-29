@@ -1,0 +1,129 @@
+/* Global Styles for Portfolio */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #eef4ff);
+  color: #1f2937;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #dbeafe;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.navbar-links a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #2563eb;
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+h1, h2 {
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* Project Cards */
+.project-card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid #e0e7ff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 20px;
+  margin: 4px;
+  font-size: 0.8rem;
+  border: 1px solid #dbeafe;
+}
+
+/* Skill Pills */
+.skill-pill {
+  background: white;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 6px;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Resume Button */
+.resume-btn {
+  padding: 12px 28px;
+  background: #2563eb;
+  color: white;
+  border-radius: 30px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resume-btn:hover {
+  background: #1e40af;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}

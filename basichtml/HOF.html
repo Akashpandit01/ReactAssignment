@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script>
+
+    async function Hof1(){
+        const response=await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+        const {drinks}=await response.json();
+
+        const alcoholecount=drinks.filter(d=>d.strAlcoholic==='Alcoholic').length;
+        const alcoholdrinks=drinks.filter(d=>d.strAlcoholic==='Alcoholic');
+         // const alcoholecount=drinks.filter(d=>d.strAlcoholic==="Alcoholic").length;
+         const strCategorycount=drinks.filter(d=>d.strCategory==='Cocktail').length;
+        const Cocktaildrinks=drinks.filter(d=>d.strCategory==='Cocktail').map(f=>f.strDrink);
+
+         const  strCategorycountname=alcoholdrinks.map(d=>d.strDrink);
+
+
+
+        console.log(Cocktaildrinks)
+       
+       
+
+    }
+    Hof1();
+  </script>
+
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,117 @@
+.contact-row {
+  margin-top: 10px;
+}
+
+.contact-card {
+  color: #e5e7eb;
+}
+
+.contact-socials a {
+  text-decoration: none;
+  padding: 6px 13px;
+  border-radius: 20px;
+  background: #1f2937;
+  margin-right: 8px;
+  border: 1px solid #4b5563;
+  transition: 0.25s;
+}
+
+.contact-socials a:hover {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #020617;
+  border: 1px solid #4b5563;
+  color: #f9fafb;
+}
+.status-text {
+  color: #a5b4fc;
+}
+
+
+/* Modern beautiful Quick Message card */
+.message-card {
+  background: rgba(17, 24, 39, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 20px;
+  transition: 0.3s ease;
+}
+
+.message-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 30px rgba(99, 102, 241, 0.25);
+}
+
+/* Floating Inputs */
+.floating-group {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.floating-group input,
+.floating-group textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 12px 14px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.floating-group input:focus,
+.floating-group textarea:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+.floating-group label {
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  color: #cbd5e1;
+  background: transparent;
+  padding: 0 6px;
+  transition: 0.25s ease;
+  pointer-events: none;
+}
+
+/* Floating effect active */
+.floating-group input:focus + label,
+.floating-group input:not(:placeholder-shown) + label,
+.floating-group textarea:focus + label,
+.floating-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 0.75rem;
+  background: #111827;
+  color: #8b5cf6;
+}
+
+/* Send button */
+.send-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+}
+
+.send-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 14px rgba(139, 92, 246, 0.45);
+}
+
+/* Status message */
+.status-text {
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}

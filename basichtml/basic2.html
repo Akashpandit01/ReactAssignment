@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p::first-letter{
+            color: red;
+            font-size: 28px;
+        }
+        p::first-line{
+            text-decoration: underline;
+        }
+
+        h1::before,h1::after{
+            content:"**" ;
+            color: red;
+        }
+        li::marker{
+            color: green;
+        }
+        h1::selection{
+            background-color:yellow;
+            
+        }
+        input::placeholder{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>heading</h1>
+      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem in temporibus, quam atque quas veniam alias, libero doloremque possimus porro! Libero, sunt tempore! Sequi quod quos eius beatae expedita.
+      Quo sit officia ea explicabo? Saepe laudantium vel dolorem dignissimos reiciendis. Sit aliquid eum aperiam consectetur corporis exercitationem accusantium nemo inventore assumenda quisquam sint, non vel nisi perferendis labore reiciendis.
+     
+      <h1>heading12</h1>
+      <h1>heading22</h1>
+      <h1>heading32</h1>
+      <h1>heading42</h1>
+
+      <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+
+
+        <form action="">
+            <div>
+                <lable for="li">Enter Name</lable>
+                <input type="text" id="il" placeholder="Eg Rahul">
+            </div>
+        </form>
+      </ul>
+</body>
+</html>

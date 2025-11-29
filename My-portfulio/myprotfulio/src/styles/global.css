@@ -1,0 +1,63 @@
+:root {
+  --bg-dark: #050816;
+  --bg-card: #111827;
+  --bg-light: #f3f4f6;
+  --text-dark: #0f172a;
+  --accent: #6366f1;
+}
+
+/* Theme backgrounds */
+body {
+  background: radial-gradient(circle at top, #1f2937 0, #020617 40%, #000 100%);
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* Main layout */
+.page-container {
+  padding-top: 90px;
+  padding-bottom: 40px;
+}
+
+/* Generic cards */
+.card-3d {
+  background: #111827;
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.8);
+}
+
+.card-2d {
+  background: #111827;
+  border-radius: 16px;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section heading */
+.section-heading h2 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+.section-heading p {
+  color: #9ca3af;
+}

@@ -1,0 +1,77 @@
+.section-heading h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.project-card {
+  background: #111827;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  padding: 18px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(88, 28, 255, 0.25);
+}
+
+/* Project screenshot */
+.project-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  transition: 0.3s;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.04);
+}
+
+/* Badge */
+.badge.role {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(99, 102, 241, 0.9);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+}
+
+/* Tech badges */
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.tech-badges span {
+  background: rgba(30, 41, 59, 0.7);
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+}
+
+/* Description */
+.desc {
+  margin-top: 10px;
+  color: #cbd5e1;
+}
+
+/* Buttons */
+.project-actions a {
+  margin-right: 8px;
+}
+
+/* GitHub Stats */
+.github-stats img {
+  width: 48%;
+  border-radius: 12px;
+  margin-top: 18px;
+}
