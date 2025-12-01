@@ -1,5 +1,6 @@
 // src/pages/Home.jsx
 import "../styles/home.css";
+import myphoto from "../assets/myphoto.jpg";
 
 function Home() {
   return (
@@ -41,7 +42,8 @@ function Home() {
 
         <div className="home-image">
           <div className="image-glow">
-            <img src="/profile.jpg" alt="Akash Pandit" />
+          <img src={myphoto} alt="Akash Pandit" />
+
           </div>
         </div>
       </div>

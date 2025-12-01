@@ -48,8 +48,8 @@ function Contact() {
             <p><strong>Location:</strong> Pune, Maharashtra, India</p>
 
             <div className="contact-socials">
-              <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-              <a href="https://github.com" target="_blank">GitHub</a>
+              <a href="https://www.linkedin.com/in/akash-pandit-aa987b1aa/" target="_blank">LinkedIn</a>
+              <a href="https://github.com/Akashpandit01" target="_blank">GitHub</a>
             </div>
           </div>
         </div>

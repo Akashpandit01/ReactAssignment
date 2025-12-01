@@ -50,11 +50,11 @@
   object-fit: cover;
 }
 
-@keyframes rotate {
+/* @keyframes rotate {
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .about {
   margin-top: 20px;

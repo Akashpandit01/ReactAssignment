@@ -34,8 +34,10 @@ function Projects() {
             </p>
 
             <div className="project-actions">
-              <a href="#" className="btn btn-sm btn-outline-light">GitHub</a>
-              <a href="#" className="btn btn-sm btn-primary">Live Demo</a>
+              <a href="https://github.com/mrpawarGit/DailyPulse-Frontend"   target="_blank"
+  rel="noopener noreferrer" className="btn btn-sm btn-outline-light">GitHub</a>
+              <a href="https://daily-pulse-app.vercel.app/"  target="_blank"
+  rel="noopener noreferrer" className="btn btn-sm btn-primary">Live Demo</a>
             </div>
           </article>
         </div>
@@ -63,7 +65,8 @@ function Projects() {
             </p>
 
             <div className="project-actions">
-              <a href="#" className="btn btn-sm btn-outline-light">GitHub</a>
+              <a href="https://github.com/Akashpandit01/Voluntier-Hub"   target="_blank"
+  rel="noopener noreferrer" className="btn btn-sm btn-outline-light">GitHub</a>
             </div>
           </article>
         </div>

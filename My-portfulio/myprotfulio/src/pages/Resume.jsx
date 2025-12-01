@@ -6,7 +6,7 @@ function Resume() {
   <section className="resume container fade-in">
   <div className="resume-header">
     <h2>Resume</h2>
-    <a href="/AkashPanditResume.pdf" className="btn btn-primary" target="_blank">
+    <a href="https://drive.google.com/file/d/1tfM45LMYNU8y1EKTQ8IAkB4sDFx8DhVJ/view?usp=sharing" className="btn btn-primary" target="_blank">
       Download PDF
     </a>
   </div>

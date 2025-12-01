@@ -9,17 +9,17 @@ function Footer() {
           © {new Date().getFullYear()} Akash Pandit. All rights reserved.
         </p>
         <div className="footer-links">
-          <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Akashpandit01" target="_blank" rel="noreferrer">
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/your-linkedin"
+            href="https://www.linkedin.com/in/akash-pandit-aa987b1aa/"
             target="_blank"
             rel="noreferrer"
           >
             LinkedIn
           </a>
-          <a href="mailto:yourmail@example.com">Email</a>
+          <a href="akashpandit3052@gmail.com" target="_blank">Email</a>
         </div>
       </div>
     </footer>
