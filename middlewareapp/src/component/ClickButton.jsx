@@ -9,19 +9,25 @@ import { useState } from "react"
    setLastClick(now);
    callback();
 
-    // if(now-lastClick<delay){
-    //     console.log("clicked bloack by middleware")
-    // }
+    if(now-lastClick<delay){
+        console.log("clicked bloack by middleware")
+        return;
+    }
   }
     }
 
 function ClickButton (){
     const handlclick=useClickMiddleware(()=>{
         console.log("Button Clicked");
+
     })
 
    
     return(<>
      <button onClick={handlclick}>Click ME</button>
     </>)
+
+
 }
+
+export default ClickButton;
