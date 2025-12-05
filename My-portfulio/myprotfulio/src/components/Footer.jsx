@@ -19,7 +19,8 @@ function Footer() {
           >
             LinkedIn
           </a>
-          <a href="akashpandit3052@gmail.com" target="_blank">Email</a>
+         <a href="mailto:akashpandit3052@gmail.com">Email</a>
+
         </div>
       </div>
     </footer>

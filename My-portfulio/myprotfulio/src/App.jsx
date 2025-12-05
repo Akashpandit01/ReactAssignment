@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import TechStack from "./pages/TechStack";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <Router>
+       <ThemeToggle />   
       {loading && <Loader />}
       <Navbar />
       
