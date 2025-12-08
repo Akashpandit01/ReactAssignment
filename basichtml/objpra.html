@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+   // const person={
+//   name:"akash",
+//   age:23
+// }
+// console.log(person.name);
+// console.log(person.age)
+
+
+// const person=new  Object();
+// person.name="akash";
+// person.age=23;
+// console.log(person.name)
+
+
+// function Person(name,age)
+// {
+//   this.name=name;
+//   this.age=age;
+// }
+// const p1=new Person("Akash",23);
+
+
+// class Person{
+//   constructor(name,age){
+//     this.name=name;
+//     this.age=age;
+//   }
+// }
+// const p1=new Person("Akash",23);
+
+
+// const proto={type:"HUman"}
+// const Person=Object.create(proto);
+// Person.name="AKash";
+// Person.name="abc"
+// delete Person.name
+// console.log(Person.name);
+
+
+
+// const obj={a:1,b:2,c:3,d:4};
+
+// for(let key in obj){
+  
+// console.log(key,obj[key])
+  
+// }
+
+// Object.keys(obj).forEach(key=>console.log(obj[key]))
+
+
+
+
+
+
+
+
+
+
+
+// Object.entries(obj).forEach(([key,val])=>
+// console.log(key,val)
+// );
+
+// console.log("a" in obj);
+
+
+
+// const obj={a:1,b:2,c:3,d:4};
+
+// Object.freeze(obj);
+
+// delete obj.a;
+
+
+// console.log(obj.a)
+
+// const obj={a:1,b:2,c:3,d:4};
+// obj.e=10;
+
+// Object.seal(obj);
+// obj.a=10 // Allowed
+// delete obj.a;// Not allowed
+// console.log(obj.e);
+
+
+
+// const obj={a:1,b:2,c:3,d:4};
+ 
+// Object.preventExtensions(obj);
+// obj.e=2;
+// console.log(obj.e);
+
+
+// const obj={a:1,b:2,c:3,d:4};
+
+// const obj2={...obj}
+// console.log(obj2)
+
+
+// const obj={a:1,b:2,c:3,d:4};
+
+// const obj2=Object.assign({},obj);
+// console.log(obj)
+
+
+// const obj={a:1,b:2,c:3,d:4};
+// const deep=JSON.parse(JSON.stringify(obj));
+
+// console.log(deep)
+
+
+// const a={x:1};
+// const b={y:2};
+// const c={...a,...b};
+// console.log(c);
+
+
+
+// const user={
+//   name:"akash",
+//   addess:{city:"Pune",}
+// };
+// console.log(user.addess?.city);
+
+// const obj={a:1,b:2};
+
+// console.log(Object.keys(obj));
+// console.log(Object.values(obj))
+
+// console.log(Object.entries(obj));
+
+
+// const arr=[["A",1],["b",2]];
+// const obj=Object.fromEntries(arr);
+// console.log(obj)
+
+
+// const Person={name:"Aaksh",age:23};
+
+// const {name,age}=Person;
+// console.log(name,age)
+
+
+
+// let key="city";
+// const obj={
+//   [key]:"pune"
+// };
+// console.log(obj.city);
+
+
+// const user={
+//   name:"akash",
+//   greet(){
+//     console.log("Hellow "+this.name);
+//   }
+// };
+
+// user.greet();
+
+
+// const obj={};
+
+// console.log(Object.keys(obj).length===0);
+
+// const obj={a:1,b:2};
+
+// console.log(Object.keys(obj).length);
+
+
+// Sort Object by Values
+
+// const obj={a:4,b:2,c:3};
+// const sorted=Object.fromEntries(
+//   Object.entries(obj).sort((a,b)=>a[1]-b[1]));
+
+
+// console.log(sorted)
+
+
+// const items=[
+//     {id:1,tags:["a","b"]},
+//     {id:2,tags:["c"]}
+//   ];
+   
+//   const flatTags=items.flatMap(i=>i.tags);
+//   console.log(flatTags);
+
+
+
+const obj=[
+  [
+    {
+      "sr_no": 1,
+      "name": "Alice",
+      "marks": [
+        [85, 90, 78],
+        [92, 88, 81]
+      ]
+    }
+  ],
+  [
+    {
+      "sr_no": 2,
+      "name": "Bob",
+      "marks": [
+        [70, 75, 80],
+        [68, 74, 79]
+      ]
+    },
+    {
+      "sr_no": 3,
+      "name": "Charlie",
+      "marks": [
+        [95, 93, 97],
+        [89, 94, 92]
+      ]
+    }
+  ]
+];
+
+
+// for(let i=0;i<obj.length;i++)
+// {
+//   for(let j=0;j<obj[i].length;j++)
+//   {
+//     let student=obj[i][j];
+//     let total=0;
+    
+//     for(let x=0;x<student.marks.length;x++)
+//     {
+//       for(let y=0;y<student.marks[x].length;y++)
+//       {
+//         total+=student.marks[x][y];
+//       }
+//     }
+    
+//     console.log(total);
+//   }
+// }
+
+
+let flat=[];
+
+// for(let i=0;i<obj.length;i++)
+// {
+//   for(let j=0;j<obj[i].length;j++)
+//   {
+//     flat.push(obj[i][j])
+//   }
+// }
+// console.log(flat);
+
+
+
+
+// let allmarks=[];
+// let sum=0;
+
+//   for(let i=0;i<obj.length;i++)
+//   {
+//     for(let j=0;j<obj[i].length;j++)
+//     {
+      
+//       let student=obj[i][j];
+      
+//       for(let x=0;x<student.marks.length;x++)
+//       {
+//         for(let y= 0; y<student.marks[x].length; y++)
+//         {
+//           allmarks.push(student.marks[x][y]);
+//           sum+=student.marks[x][y]
+//         }
+//       }
+//     }
+//   }
+
+// console.log(allmarks," ",sum)
+
+
+
+
+// const totals=obj.flat().map(student=>{
+//   const total=student.marks.flat().reduce((a,b)=>a+b,0);
+  
+//   return {name:student.name,total};
+// })
+// console.log(totals);
+
+
+
+// const students=obj.flat();
+// const names=students.map(s=>s.name);
+
+// const marks=students.map(s=>s.marks.flat(2));
+// const marks=students.flatMap(s=>s.marks.flat());
+// console.log(marks);
+
+// let totals=0;
+
+// const students=obj.flat();
+// students.map((s)=>{
+//   s.marks.flat(2).map(m=>{
+//     // console.log(m);
+//     totals=totals+m;
+//   })
+//   })
+//   console.log(totals);
+
+// console.log(names);
+  // let students=obj.flat();
+  // students.forEach(s=>{
+  //   // console.log(s.name);
+  //   s.marks.flat(2).map(m=>{
+  //     console.log(m);
+  //   })
+  // })
+
+
+// let students=obj.flat();
+// const allmarks=students.flatMap(s=>s.marks.flat());
+// console.log(allmarks);
+
+
+
+
+// const students=obj.flat();
+// const toppers=students.filter(s=>
+// s.marks.flat().reduce((a,b)=>a+b,0)>500
+// );
+// console.log(toppers);
+
+
+
+
+
+ const students=obj.flat();
+ let to
+const marks=students.forEach((s)=>{
+  // console.log( s.marks.flat(2));
+  let arr=s.marks.flat(2);
+  let sum=arr.reduce((acc,curr)=>acc+curr,0);
+  console.log(`name:${s.name} total:${sum}`);
+  
+ 
+})
+</script>
+</head>
+<body>
+    
+</body>
+</html>

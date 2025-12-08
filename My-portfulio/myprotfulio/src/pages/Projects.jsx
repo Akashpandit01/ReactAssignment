@@ -3,6 +3,7 @@ import "../styles/projects.css";
 import dalypulse1 from "../assets/tech/dalypulse1.png";
 import voluntirehub from "../assets/tech/voluntirehub.png";
 
+
 function Projects() {
   return (
     <section className="projects container fade-in">
