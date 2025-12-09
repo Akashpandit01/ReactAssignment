@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 import MemoizedMarkers from './Markers'
 import 'leaflet/dist/leaflet.css'
-
+import L from 'leaflet'
 
 
 // fix default icon paths (for Vite)

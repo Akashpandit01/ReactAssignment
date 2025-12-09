@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+//  async function analyzeAlbumsPhotos (){
+//   const albumsRes = await fetch("https://jsonplaceholder.typicode.com/albums");
+//   const photosRes = await fetch("https://jsonplaceholder.typicode.com/photos");
+
+//   const albums=await  albumsRes.json();
+//   const photos= await photosRes.json();
+//   console.log(albums.length);
+
+//   const photosByAlbum=photos.reduce((acc,p)=>{
+
+//     acc[p.albumId]=(acc[p.albumId] ||[]);
+//     acc[p.albumId].push(p);
+
+//     return acc;
+
+//   },{});
+
+
+//   const user3Albums=albums.filter(a=>a.userId==3);
+
+
+//   user3Albums.forEach(album => {
+//     const count=photosByAlbum[album.id]?.length ||0;
+
+//     console.log(`Album Title : ${album.title} -Photos : ${count}`);
+    
+
+//     const album7=photosByAlbum[7];
+//     if(album7)
+//     console.log(" album7",album7[0].url);
+//   });
+// }
+// analyzeAlbumsPhotos();
+
+
+async function photoalubmss() {
+
+    const albumres= await fetch("https://jsonplaceholder.typicode.com/albums");
+    const photores= await fetch("https://jsonplaceholder.typicode.com/photos");
+
+    const albumresult= await albumres.json();
+     const photoresult= await photores.json();
+
+     const totalphotos=albumresult.length;
+     console.log(totalphotos);
+ 
+  
+
+
+//  const photosByAlbum=photos.reduce((acc,p)=>{
+
+//     acc[p.albumId]=(acc[p.albumId] ||[]);
+//     acc[p.albumId].push(p);
+
+//     return acc;
+
+//   },{});
+
+
+const photosByalbum=photoresult.reduce((acc,p)=>{
+    acc[p.albumId]=(acc[p.albumId]|| []);
+    acc[p.albumId].push(p);
+    return acc;
+});
+
+console.log(photosByalbum);
+
+
+
+
+
+
+    //  const id3=albumresult.filter(d=>d.userId===3);
+    // //  console.log(id3);
+
+    // id3.forEach(element => {
+        
+    // });
+    
+}
+photoalubmss();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
