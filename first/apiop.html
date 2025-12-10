@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script> 
+
+        async function fetchdata() {
+            const response= await fetch('https://thecocktaildb.com/api/json/v1/1/search.php?f=a');
+            const {drinks}= await response.json();
+             let listc= drinks.map(d=>d.strCategory);
+              listc.forEach(element => {
+            //  console.log(element)
+                
+              });
+             const Alcoholiccount= drinks.filter(d=>d=>d.strCategory==='Alcoholic').length;
+             console.log(Alcoholiccount)
+             const NonAlcoholiccount= drinks.filter(d=>d=>d.strCategory!=='Alcoholic').length;
+            //  console.log(NonAlcoholiccount)
+
+
+    //          const cocktailWithMostIngredients=drinks.reduce((max,drink)=>{
+    //     const ingredientcount=Object.keys(drink) 
+    //     .filter(key=>key.startsWith("strIngredient") && drink[key])
+    //     .length;
+    //     return ingredientcount>max.count?{name:drink.strDrink,count:ingredientcount}:max;
+    // },{name:"",count:0});
+    // console.log(cocktailWithMostIngredients);
+               
+
+  const cocktailWithMostIngredients=drinks.reduce((max,drink)=>{
+    const ingredientcount=Object.keys(drink).filter(key=>key.startsWith("strIngredient") &&drink[key]).length;
+
+       return ingredientcount>max.count?{name:drink.strDrink,count:ingredientcount}:max
+  },{name:"",count:0})
+  console.log(cocktailWithMostIngredients)
+
+
+  const uniqueglass=[...new Set(drinks.map(d=>d.strGlass))].sort();
+  console.log(uniqueglass);
+
+   const sevvglass=drinks.filter(d=>d.strGlass==="Cocktail glass").map(d=>d.strDrink);
+   sevvglass.forEach(ele=>{
+    console.log(ele)
+   })
+//   console.log(sevvglass);
+   
+        }
+        fetchdata();
+    </script>
+</head>
+<body>
+     
+</body>
+</html>

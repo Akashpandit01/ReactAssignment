@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Feed App</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #f5f5f5;
+  }
+
+  header {
+    background: white;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  #feed {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .post {
+    background: white;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .post:hover {
+    background: #fafafa;
+  }
+
+  #pagination {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .page-btn {
+    padding: 8px 14px;
+    margin: 5px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+  }
+
+  .active-page {
+    background: black;
+    color: white;
+  }
+
+  /* Detail modal */
+  #modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  #modal-content {
+    background: white;
+    padding: 25px;
+    width: 600px;
+    border-radius: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .transformer {
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h2>JSONPlaceholder Feed Viewer</h2>
+
+  <input id="searchBox" type="text" placeholder="Search..." style="width:60%; padding:8px;">
+  <select id="searchMode">
+    <option value="title">Title Only</option>
+    <option value="full">Full Text</option>
+    <option value="fuzzy">Fuzzy Search</option>
+  </select>
+
+  <br><br>
+
+  <label><input type="checkbox" class="transformer" value="highlight"> Highlight long posts</label>
+  <label><input type="checkbox" class="transformer" value="hideUser"> Hide posts by User 1</label>
+  <label><input type="checkbox" class="transformer" value="group"> Group by User</label>
+  <label><input type="checkbox" class="transformer" value="sortComments"> Sort by Comment Count</label>
+</header>
+
+<div id="feed"></div>
+<div id="pagination"></div>
+
+<!-- Detail Modal -->
+<div id="modal">
+  <div id="modal-content"></div>
+</div>
+
+<script>
+/* ============================
+   GLOBAL DATA
+============================ */
+let POSTS = [];
+let USERS = [];
+let COMMENTS = [];
+let currentPage = 1;
+const pageSize = 10;
+
+/* ============================
+   UTILITY FUNCTIONS
+============================ */
+function debounce(fn, delay=500){
+  let timer;
+  return (...args)=>{
+    clearTimeout(timer);
+    timer = setTimeout(()=>fn(...args), delay);
+  };
+}
+
+function fuzzyMatch(text, query){
+  text = text.toLowerCase();
+  query = query.toLowerCase();
+  let i=0, j=0;
+  while(i<text.length && j<query.length){
+    if(text[i] === query[j]) j++;
+    i++;
+  }
+  return j === query.length;
+}
+
+/* ============================
+   FETCH INITIAL DATA
+============================ */
+async function loadInitial(){
+  const [p,u,c] = await Promise.all([
+    fetch("https://jsonplaceholder.typicode.com/posts").then(r=>r.json()),
+    fetch("https://jsonplaceholder.typicode.com/users").then(r=>r.json()),
+    fetch("https://jsonplaceholder.typicode.com/comments").then(r=>r.json()),
+  ]);
+  POSTS = p;
+  USERS = u;
+  COMMENTS = c;
+  renderFeed();
+}
+loadInitial();
+
+/* ============================
+   SEARCH FILTER
+============================ */
+function searchFilter(list, query, mode){
+  if(!query.trim()) return list;
+
+  return list.filter(post=>{
+    const title = post.title.toLowerCase();
+    const body  = post.body.toLowerCase();
+    const user  = USERS.find(u=>u.id===post.userId)?.name.toLowerCase();
+
+    query = query.toLowerCase();
+
+    if(mode==="title") return title.includes(query);
+    if(mode==="full") return title.includes(query) || body.includes(query) || user.includes(query);
+    if(mode==="fuzzy") return fuzzyMatch(title + body + user, query);
+  });
+}
+
+/* ============================
+   FEED TRANSFORMERS (HOF)
+============================ */
+const transformers = {
+  highlight: posts => posts.map(p =>
+    p.body.length > 120 ? {...p, highlight:true} : p
+  ),
+
+  hideUser: posts => posts.filter(p => p.userId !== 1),
+
+  group: posts => {
+    let grouped = posts.reduce((acc,p)=>{
+      (acc[p.userId] = acc[p.userId] || []).push(p);
+      return acc;
+    },{});
+    
+    let finalFeed = [];
+    for(let uid in grouped){
+      finalFeed.push({ separator:true, username: USERS.find(u=>u.id==uid)?.name });
+      finalFeed.push(...grouped[uid]);
+    }
+    return finalFeed;
+  },
+
+  sortComments: posts => {
+    let commentCount = COMMENTS.reduce((acc,c)=>{
+      acc[c.postId] = (acc[c.postId]||0)+1;
+      return acc;
+    },{});
+    return [...posts].sort((a,b)=> (commentCount[b.id]||0) - (commentCount[a.id]||0));
+  }
+};
+
+/* ============================
+   APPLY PIPELINE OF TRANSFORMERS
+============================ */
+function applyTransformers(list){
+  const active = [...document.querySelectorAll('.transformer:checked')].map(c=>c.value);
+  let transformed = list;
+
+  active.forEach(t => {
+    transformed = transformers[t](transformed);
+  });
+
+  return transformed;
+}
+
+/* ============================
+   PAGINATION
+============================ */
+function paginate(list){
+  const totalPages = Math.ceil(list.length / pageSize);
+  if(currentPage > totalPages) currentPage = 1;
+
+  let start = (currentPage-1)*pageSize;
+  let slice = list.slice(start, start+pageSize);
+
+  renderPagination(totalPages);
+
+  return slice;
+}
+
+function renderPagination(total){
+  const pag = document.getElementById("pagination");
+  pag.innerHTML = "";
+
+  if(total <= 1) return;
+
+  const prev = document.createElement("button");
+  prev.innerText = "Prev";
+  prev.className = "page-btn";
+  prev.onclick = ()=>{
+    if(currentPage > 1){ currentPage--; renderFeed(); }
+  };
+  pag.appendChild(prev);
+
+  for(let i=1;i<=total;i++){
+    const b = document.createElement("button");
+    b.innerText = i;
+    b.className = "page-btn" + (i===currentPage? " active-page":"");
+    b.onclick = ()=>{ currentPage=i; renderFeed(); };
+    pag.appendChild(b);
+  }
+
+  const next = document.createElement("button");
+  next.innerText = "Next";
+  next.className = "page-btn";
+  next.onclick = ()=>{
+    if(currentPage < total){ currentPage++; renderFeed(); }
+  };
+  pag.appendChild(next);
+}
+
+/* ============================
+   RENDER FEED
+============================ */
+function renderFeed(){
+  const feed = document.getElementById("feed");
+  feed.innerHTML = "<p>Loading...</p>";
+
+  const q = document.getElementById("searchBox").value;
+  const mode = document.getElementById("searchMode").value;
+
+  let filtered = searchFilter(POSTS, q, mode);
+  let transformed = applyTransformers(filtered);
+  let pageItems = paginate(transformed);
+
+  feed.innerHTML = "";
+
+  if(pageItems.length === 0){
+    feed.innerHTML = "<p>No results found.</p>";
+    return;
+  }
+
+  pageItems.forEach(p=>{
+    if(p.separator){
+      feed.innerHTML += `<h3>— ${p.username} —</h3>`;
+      return;
+    }
+
+    let html = `
+      <div class="post" style="${p.highlight?'background:#fff7d1;':''}" onclick="openDetail(${p.id})">
+        <h3>${p.title}</h3>
+        <p>${p.body.substring(0,120)}...</p>
+        <small>Author: ${USERS.find(u=>u.id===p.userId)?.name}</small>
+      </div>
+    `;
+    feed.innerHTML += html;
+  });
+}
+
+/* ============================
+   DETAIL VIEW (Parallel Fetch)
+============================ */
+async function openDetail(id){
+  const [post, comments] = await Promise.all([
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(r=>r.json()),
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`).then(r=>r.json()),
+  ]);
+
+  const user = USERS.find(u=>u.id===post.userId);
+
+  const modal = document.getElementById("modal");
+  const box = document.getElementById("modal-content");
+
+  box.innerHTML = `
+    <h2>${post.title}</h2>
+    <p>${post.body}</p>
+    <p><b>Author:</b> ${user.name} (${user.email})</p>
+    <h3>Comments</h3>
+    ${comments.map(c=>`<p><b>${c.email}</b>: ${c.body}</p>`).join("")}
+    <br>
+    <button onclick="closeModal()">Close</button>
+  `;
+
+  modal.style.display = "flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+/* ============================
+   EVENT HANDLERS
+============================ */
+document.getElementById("searchBox").addEventListener("input", debounce(()=>{
+  currentPage = 1;
+  renderFeed();
+}, 400));
+
+document.querySelectorAll('.transformer').forEach(ch=>{
+  ch.addEventListener("change", ()=>{
+    currentPage = 1;
+    renderFeed();
+  });
+});
+</script>
+</body>
+</html>
