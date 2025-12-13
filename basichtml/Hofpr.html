@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+   async function  fetchData() {
+     const res= await fetch('https://jsonplaceholder.typicode.com/photos');
+     const res1= await fetch('https://jsonplaceholder.typicode.com/albums');
+ 
+     const photos= await res.json();
+     const albums= await res1.json();
+
+      console.log(photos.length);
+
+
+      const userid3=albums.filter(a=>a.userId===3);
+
+         const albumsummaries=userid3.map(a=>{
+          const count=photos.filter(p=>p.albumId===a.id).length;
+          return `album Title:${a.title}--Photos:${count}`;
+         });
+         console.log("UserId 3 albusumaries ",albumsummaries);
+
+
+         const id7=photos.filter(p=>p.id===7);
+
+         console.log(id7);
+
+         if(id7.length>0)
+         {
+          console.log(id7[0].url);
+         }
+  
+
+         const photosByAlbum=photos.reduce((acc,p)=>{})
+
+   }
+
+   fetchData();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

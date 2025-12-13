@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+//   let arr=[10,20,30,40,50,60];
+
+
+//   const sum=arr.reduce((acc,cur)=>{
+//    return acc+cur
+//   });
+//   console.log(sum)
+
+// const users = [
+//   {name: "Akash", city: "Pune"},
+//   {name: "Ravi", city: "Mumbai"},
+//   {name: "Sagar", city: "Pune"}
+// ];
+
+// const grouped=user.reduce((acc,user)=>{
+//     acc[user.city]=acc[user.city] || [];
+//     acc[user.city].push(user);
+
+//     return acc;
+// },{})
+
+//   const arr=[10,20,30];
+//   const sum=arr.reduce((acc,num)=>acc+num,0);
+//   console.log(sum);
+
+
+// const str="javascript";
+
+// const freq=str.split("").reduce((acc,char)=>{
+//     acc[char]=(acc[char] || 0 )+1;
+//     return acc;
+// },{})
+// console.log(freq)
+
+
+// const num = 1122334455;
+
+
+//   const freq=String(num).split("").reduce((acc,d)=>{
+//     acc[d]=(acc[d] || 0)+1;
+//     return acc;
+//   },{})
+//   console.log(freq);
+
+
+// const arr=[1,[2,3],4];
+// const flat=arr.reduce((acc,item)=>acc.concat(item),[])
+//   console.log(flat)
+
+
+// function deepflatten(arr){
+//     return arr.reduce((acc,item)=>{
+//         return Array.isArray(item)
+//     })
+// }
+ 
+
+// let nums=[3,9,1,20,7];
+// const max=nums.reduce((acc,num)=>{
+//     return num>acc?num:acc;
+// },nums[0]);
+// console.log(max);
+
+
+//  const str="javascript";
+//  const freq=str.split("").reduce((acc,char)=>{
+//     acc[char]=(acc[char] ||0)+1;
+
+//     return acc;
+//  },{});
+//  console.log(freq);
+
+
+
+// const users=[
+//     {name:"akash",city:"Pune"},
+//     {name:"Ravi",city:"Mumbai"},
+//     {name:"sugar",city:"Pune"}
+// ]
+// const grouped=users.reduce((acc,user)=>{
+//     acc[user.city]=acc[user.city] || [];
+// })
+
+
+async function solvePublicAPI(){
+    const res=await fetch("https://api.publicapis.org/entries");
+    const data=await res.json();
+    const entries=data.entries;
+    conole.log(entries.length);
+}
+
+solvePublicAPI()
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
